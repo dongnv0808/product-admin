@@ -6,17 +6,16 @@ import { PageDto } from '../../paginations/page.dto';
 
 @Controller('users')
 export class UsersController {
-    constructor(
-        private readonly usersService: UsersService
-    ){}
-    @Get()
-    async findAll(
-        @Query() pageOptionsDto:PageOptionsDto
-    ): Promise<PageDto<CreateUserDto>> {
-        return await this.usersService.getAll(pageOptionsDto)
-    }
-    @Post()
-    async create(@Body() createUserDto:CreateUserDto){
-        return await this.usersService.createUser(createUserDto)
-    }
+  constructor(private readonly usersService: UsersService) {}
+  @Get()
+  async findAll(
+    @Query() pageOptionsDto: PageOptionsDto,
+  ): Promise<PageDto<CreateUserDto>> {
+    return await this.usersService.getAll(pageOptionsDto);
+  }
+
+  @Post()
+  async create(@Body() createUserDto: CreateUserDto) {
+    return await this.usersService.createUser(createUserDto);
+  }
 }
